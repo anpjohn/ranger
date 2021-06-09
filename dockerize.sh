@@ -22,7 +22,7 @@ mv /tmp/ranger-main/librenms-env.txt /var/lib/librenms/.env
 mv /tmp/ranger-main/librenms-librenms.env.txt /var/lib/librenms/librenms.env
 mv /tmp/ranger-main/librenms-docker-compose.yml.txt /var/lib/librenms/docker-compose.yml
 touch /var/lib/librenms/msmtpd.env
-docker-compose -f /var/lib/librenms/ up -d
+docker-compose -f /var/lib/librenms/docker-compose.yml up -d
 #
 #
 ##############################################openvas
@@ -72,7 +72,7 @@ mv /tmp/ranger-main/oxidized-docker-compose.yml.txt /var/lib/oxidized/docker-com
 mkdir /etc/oxidized/
 mv /tmp/ranger-main/oxidized-etc-oxidized-config.txt /etc/oxidized/config
 touch /etc/oxidized/router.db
-docker-compose -f /var/lib/oxidized up -d 
+docker-compose -f /var/lib/oxidized/docker-compose.yml up -d 
 #
 #
 ###############################################portainer
