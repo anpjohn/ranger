@@ -14,11 +14,11 @@
 
 # To allow <host> as hostname/address part of a Host header:
 #
-ALLOW_HEADER_HOST="10.11.5.204"
+#ALLOW_HEADER_HOST="0.0.0.0"
 
 # To set listening address:
 #
-LISTEN_ADDRESS="0.0.0.0"
+#LISTEN_ADDRESS="0.0.0.0"
 
 # To set listening port number:
 #
