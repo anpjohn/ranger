@@ -18,6 +18,7 @@ tar -xvf /tmp/main.tar.gz --directory /tmp/
 #
 #
 mkdir /var/lib/librenms
+cd /var/lib/librenms
 cp /tmp/ranger-main/librenms-env.txt /var/lib/librenms/.env
 cp /tmp/ranger-main/librenms-librenms.env.txt /var/lib/librenms/librenms.env
 cp /tmp/ranger-main/librenms-docker-compose.yml.txt /var/lib/librenms/docker-compose.yml
@@ -29,6 +30,7 @@ docker-compose -f /var/lib/librenms/docker-compose.yml up -d
 #
 #
 mkdir /var/lib/openvas
+cd /var/lib/openvas
 mkdir /etc/default
 rm -rf /etc/default/openvas-gsa
 cp /tmp/ranger-main/openvas-gsa /etc/default/openvas-gsa
@@ -50,6 +52,7 @@ docker run -d -p 443:443 -v /etc/default/openvas-gsa:/etc/default/openvas-gsa -v
 #
 #
 mkdir /var/lib/ntopng
+cd /var/lib/ntopng
 touch /var/lib/ntopng/ntopng.license
 cp /tmp/ranger-main/ntopng-docker-compose-yml.txt /var/lib/ntopng/docker-compose.yml
 ip address
@@ -68,6 +71,7 @@ docker-compose -f /var/lib/ntopng/docker-compose.yml up -d
 #
 #
 mkdir /var/lib/oxidized
+cd /var/lib/oxidized
 cp /tmp/ranger-main/oxidized-docker-compose.yml.txt /var/lib/oxidized/docker-compose.yml
 mkdir /etc/oxidized/
 cp /tmp/ranger-main/oxidized-etc-oxidized-config.txt /etc/oxidized/config
