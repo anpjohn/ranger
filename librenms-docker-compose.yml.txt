@@ -35,13 +35,6 @@ services:
       - "TZ=${TZ}"
     restart: always
 
-  msmtpd:
-    image: crazymax/msmtpd:latest
-    container_name: librenms_msmtpd
-    env_file:
-      - "./msmtpd.env"
-    restart: always
-
   librenms:
     image: librenms/librenms:latest
     container_name: librenms
@@ -56,7 +49,6 @@ services:
     depends_on:
       - db
       - memcached
-      - msmtpd
     volumes:
       - "./librenms:/data"
     env_file:
