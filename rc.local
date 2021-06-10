@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port1:localhost:22 -N -p 443 reversessh@reversessh.getanp.com" reversessh
+su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port2:localhost:443 -N -p 443 reversessh@reversessh.getanp.com" reversessh
+su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port3:localhost:9000 -N -p 443 reversessh@reversessh.getanp.com" reversessh
+su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port4:localhost:3000 -N -p 443 reversessh@reversessh.getanp.com" reversessh
+su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port5:localhost:8000 -N -p 443 reversessh@reversessh.getanp.com" reversessh
+
+exit 0
