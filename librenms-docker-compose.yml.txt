@@ -1,3 +1,4 @@
+  
 version: "3.5"
 
 services:
@@ -11,7 +12,7 @@ services:
       - "--character-set-server=utf8mb4"
       - "--collation-server=utf8mb4_unicode_ci"
     volumes:
-      - "/var/lib/librenms/db:/var/lib/mysql"
+      - "./db:/var/lib/mysql"
     environment:
       - "TZ=${TZ}"
       - "MYSQL_ALLOW_EMPTY_PASSWORD=yes"
@@ -34,12 +35,12 @@ services:
       - "TZ=${TZ}"
     restart: always
 
-# msmtpd:
-#   image: crazymax/msmtpd:latest
-#   container_name: librenms_msmtpd
-#   env_file:
-#     - "./msmtpd.env"
-#   restart: always
+  msmtpd:
+    image: crazymax/msmtpd:latest
+    container_name: librenms_msmtpd
+    env_file:
+      - "./msmtpd.env"
+    restart: always
 
   librenms:
     image: librenms/librenms:latest
@@ -55,11 +56,11 @@ services:
     depends_on:
       - db
       - memcached
-#      - msmtpd
+      - msmtpd
     volumes:
-      - "/var/lib/librenms:/data"
+      - "./librenms:/data"
     env_file:
-      - "/var/lib/librenms/librenms.env"
+      - "./librenms.env"
     environment:
       - "TZ=${TZ}"
       - "PUID=${PUID}"
@@ -85,9 +86,9 @@ services:
       - librenms
       - redis
     volumes:
-      - "/var/lib/librenms:/data"
+      - "./librenms:/data"
     env_file:
-      - "/var/lib/librenms/librenms.env"
+      - "./librenms.env"
     environment:
       - "TZ=${TZ}"
       - "PUID=${PUID}"
@@ -121,9 +122,9 @@ services:
         published: 514
         protocol: udp
     volumes:
-      - "/var/lib/librenms:/data"
+      - "./librenms:/data"
     env_file:
-      - "/var/lib/librenms/librenms.env"
+      - "./librenms.env"
     environment:
       - "TZ=${TZ}"
       - "PUID=${PUID}"
