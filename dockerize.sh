@@ -58,12 +58,14 @@ cp /tmp/ranger-main/ntopng-docker-compose-yml.txt /var/lib/ntopng/docker-compose
 ip address
 echo
 echo
+read -p "community edition? : y/n " community_input
+if [ $community_input = y ] ; then
+        sed -i s/--community//g /var/lib/ntopng/docker-compose.yml
+fi
 read -p "enter the interface you want to use  : " interface_input
 echo
 echo
-sedntopold=enp4s0
-sedntopnew=$interface_input
-sed -i "s/$sedntopold/$sedntopnew/g" /var/lib/ntopng/docker-compose.yml
+sed -i "s/enp4s0/$interface_input/g" /var/lib/ntopng/docker-compose.yml
 docker-compose -f /var/lib/ntopng/docker-compose.yml up -d
 #
 #
