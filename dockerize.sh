@@ -59,7 +59,7 @@ ip address
 echo
 echo
 read -p "community edition? : y/n " community_input
-if [ $community_input = y ] ; then
+if [ $community_input = n ] ; then
         sed -i s/--community//g /var/lib/ntopng/docker-compose.yml
 fi
 read -p "enter the interface you want to use  : " interface_input
