@@ -86,3 +86,33 @@ docker volume create portainer_data
 docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 #
 #
+###############################################reversessh
+#
+#
+echo
+echo
+echo "Creating The Reversessh User"
+echo
+echo
+useradd -s /bin/bash -m reversessh
+su - reversessh -c "ssh-keygen -b 4096 -t rsa -N '' -f ~/.ssh/id_rsa"
+cat /home/reversessh/.ssh/id_rsa.pub
+echo -n "Please put the above key on reversessh and create the user in mysql (enter to continue)"
+read -p "Direct To SSH Port 22 (port1):" ssh_port
+read -p "Direct To 443 (OPENVAS) (port2): " openvas_port
+read -p "Direct to 9000 (Portainer) (port3): " portainer_port
+read -p "Direct to 3000 (NTOPNG) (port4): " ntopng_port
+read -p "Direct to 8000 (LibreNMS) (port5): " librenms_port
+sed -i s/port1/${ssh_port}/g /tmp/ranger-main/rc.local 
+sed -i s/port2/${openvas_port}/g /tmp/ranger-main/rc.local
+sed -i s/port3/${portainer_port}/g /tmp/ranger-main/rc.local 
+sed -i s/port4/${ntopng_port}/g /tmp/ranger-main/rc.local 
+sed -i s/port5/${librenms_port}/g /tmp/ranger-main/rc.local 
+cp /tmp/ranger-main/rc.local /etc/rc.local
+chmod +x /etc/rc.local
+echo "Installed, a reboot is recommended to make this go live"
+su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port1:localhost:22 -N -p 443 reversessh@reversessh.getanp.com" reversessh
+su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port2:localhost:443 -N -p 443 reversessh@reversessh.getanp.com" reversessh
+su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port3:localhost:9000 -N -p 443 reversessh@reversessh.getanp.com" reversessh
+su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port4:localhost:3000 -N -p 443 reversessh@reversessh.getanp.com" reversessh
+su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port5:localhost:8000 -N -p 443 reversessh@reversessh.getanp.com" reversessh
