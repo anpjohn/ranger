@@ -37,7 +37,7 @@ cp /tmp/ranger-main/openvas-gsa /etc/default/openvas-gsa
 ip address
 echo
 echo
-read -p "Enter the IP you want to access the web gui on in quotes, scroll up if you need it  :" ip_input
+read -p "Enter the IP you want to access the web gui on in quotes, scroll up if you need it  : " ip_input
 echo
 echo
 sednew=ALLOW_HEADER_HOST=$ip_input
@@ -58,7 +58,7 @@ cp /tmp/ranger-main/ntopng-docker-compose-yml.txt /var/lib/ntopng/docker-compose
 ip address
 echo
 echo
-read -p "enter the interface you want to use  :" interface_input
+read -p "enter the interface you want to use  : " interface_input
 echo
 echo
 sedntopold=enp4s0
