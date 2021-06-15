@@ -4,7 +4,7 @@
 #################################################install docker, docker-compose, some other tools
 #
 #
-apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common net-tools screen autossh -y
+apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common net-tools screen autossh python3 python3-pip git -y
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 apt update
@@ -86,6 +86,15 @@ docker-compose -f /var/lib/oxidized/docker-compose.yml up -d
 #
 docker volume create portainer_data
 docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+#
+#
+###############################################openvasreporttool
+#
+#
+cd /var/lib/
+git clone https://github.com/TheGroundZero/openvasreporting.git
+cd /var/lib/openvasreporting
+pip3 install -r requirements.txt
 #
 #
 ###############################################reversessh
