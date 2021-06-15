@@ -95,6 +95,7 @@ cd /var/lib/
 git clone https://github.com/TheGroundZero/openvasreporting.git
 cd /var/lib/openvasreporting
 pip3 install -r requirements.txt
+mkdir /var/lib/openvasreporting/reports
 #
 #
 ###############################################reversessh
