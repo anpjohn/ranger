@@ -93,6 +93,9 @@ docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.
 #
 cd /var/lib/
 git clone https://github.com/TheGroundZero/openvasreporting.git
+cd /var/lib/openvasreporting
+pip3 install -r requirements.txt
+mv /tmp/ranger-main/parser.py /var/lib/openvasreporting/openvasreporting/libs
 #
 #
 ###############################################reversessh
