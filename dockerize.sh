@@ -115,7 +115,10 @@ cat /home/reversessh/.ssh/id_rsa.pub
 #so this is partially broke, you need to login to reversessh user and run 
 #autossh -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port1:localhost:22 -N -p 443 reversessh@reversessh.getanp.com
 #then accept the rsa public key, there is a way to fix this but i havent had time
+echo
 echo -n "Please put the above key on reversessh and create the user in mysql (enter to continue)"
+echo
+echo
 read -p "Direct To SSH Port 22 (port1) enter port1 if configuring later:" ssh_port
 read -p "Direct To 443 (OPENVAS) (port2): enter port2 if configuring later" openvas_port
 read -p "Direct to 9000 (Portainer) (port3): enter port 3 if configuring later" portainer_port
