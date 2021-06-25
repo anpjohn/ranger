@@ -3,7 +3,7 @@
 ip address
 echo
 echo
-read -p "Enter the IP you want to access the web gui on in quotes for openvas, scroll up if you need it  : " ip_input
+read -p "Enter the IP you want to access the web gui on in quotes for openvas, scroll up if you need it (enter "0.0.0.0" if not onsite yet) : " ip_input
 echo
 echo
 sednew=ALLOW_HEADER_HOST=$ip_input
@@ -19,7 +19,7 @@ read -p "community edition? : y/n " community_input
 if [ $community_input = n ] ; then
         sed -i s/--community//g /var/lib/ntopng/docker-compose.yml
 fi
-read -p "enter the interface you want to use  : " interface_input
+read -p "enter the interface you want to use : " interface_input
 echo
 echo
 sed -i "s/enp4s0/$interface_input/g" /var/lib/ntopng/docker-compose.yml
