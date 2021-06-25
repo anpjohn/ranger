@@ -37,7 +37,7 @@ cp /tmp/ranger-main/openvas-gsa /etc/default/openvas-gsa
 ip address
 echo
 echo
-read -p "Enter the IP you want to access the web gui on in quotes, scroll up if you need it (enter 0.0.0.0 in quotes if configuring later)  : " ip_input
+read -p "Enter the IP you want to access the web gui on in quotes scroll (enter 0.0.0.0 in quotes if configuring later)  : " ip_input
 echo
 echo
 sednew=ALLOW_HEADER_HOST=$ip_input
@@ -119,11 +119,11 @@ echo
 echo -n "Please put the above key on reversessh and create the user in mysql (enter to continue)"
 echo
 echo
-read -p "Direct To SSH Port 22 (port1) enter port1 if configuring later:" ssh_port
-read -p "Direct To 443 (OPENVAS) (port2): enter port2 if configuring later" openvas_port
-read -p "Direct to 9000 (Portainer) (port3): enter port 3 if configuring later" portainer_port
-read -p "Direct to 3000 (NTOPNG) (port4): enter port 4 if configuring later" ntopng_port
-read -p "Direct to 8000 (LibreNMS) (port5): enter port 5 if configuring later" librenms_port
+read -p "Direct To SSH Port 22 (port1) enter port1 if configuring later : " ssh_port
+read -p "Direct To 443 (OPENVAS) (port2) enter port2 if configuring later : " openvas_port
+read -p "Direct to 9000 (Portainer) (port3): enter port 3 if configuring later : " portainer_port
+read -p "Direct to 3000 (NTOPNG) (port4): enter port 4 if configuring later : " ntopng_port
+read -p "Direct to 8000 (LibreNMS) (port5): enter port 5 if configuring later : " librenms_port
 sed -i s/port1/${ssh_port}/g /tmp/ranger-main/rc.local 
 sed -i s/port2/${openvas_port}/g /tmp/ranger-main/rc.local
 sed -i s/port3/${portainer_port}/g /tmp/ranger-main/rc.local 
