@@ -37,7 +37,7 @@ cp /tmp/ranger-main/openvas-gsa /etc/default/openvas-gsa
 ip address
 echo
 echo
-read -p "Enter the IP you want to access the web gui on in quotes, scroll up if you need it  : " ip_input
+read -p "Enter the IP you want to access the web gui on in quotes, scroll up if you need it (enter "0.0.0.0" if not onsite)  : " ip_input
 echo
 echo
 sednew=ALLOW_HEADER_HOST=$ip_input
@@ -62,7 +62,7 @@ read -p "community edition? : y/n " community_input
 if [ $community_input = n ] ; then
         sed -i s/--community//g /var/lib/ntopng/docker-compose.yml
 fi
-read -p "enter the interface you want to use  : " interface_input
+read -p "enter the interface you want to use : " interface_input
 echo
 echo
 sed -i "s/enp4s0/$interface_input/g" /var/lib/ntopng/docker-compose.yml
@@ -109,12 +109,15 @@ echo
 useradd -s /bin/bash -m reversessh
 su - reversessh -c "ssh-keygen -b 4096 -t rsa -N '' -f ~/.ssh/id_rsa"
 cat /home/reversessh/.ssh/id_rsa.pub
+#so this is partially broke, you need to login to reversessh user and run 
+#autossh -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port1:localhost:22 -N -p 443 reversessh@reversessh.getanp.com
+#then accept the rsa public key, there is a way to fix this but i havent had time
 echo -n "Please put the above key on reversessh and create the user in mysql (enter to continue)"
-read -p "Direct To SSH Port 22 (port1):" ssh_port
-read -p "Direct To 443 (OPENVAS) (port2): " openvas_port
-read -p "Direct to 9000 (Portainer) (port3): " portainer_port
-read -p "Direct to 3000 (NTOPNG) (port4): " ntopng_port
-read -p "Direct to 8000 (LibreNMS) (port5): " librenms_port
+read -p "Direct To SSH Port 22 (port1) enter port1 if configuring later:" ssh_port
+read -p "Direct To 443 (OPENVAS) (port2): enter port2 if configuring later" openvas_port
+read -p "Direct to 9000 (Portainer) (port3): enter port 3 if configuring later" portainer_port
+read -p "Direct to 3000 (NTOPNG) (port4): enter port 4 if configuring later" ntopng_port
+read -p "Direct to 8000 (LibreNMS) (port5): enter port 5 is configuring later" librenms_port
 sed -i s/port1/${ssh_port}/g /tmp/ranger-main/rc.local 
 sed -i s/port2/${openvas_port}/g /tmp/ranger-main/rc.local
 sed -i s/port3/${portainer_port}/g /tmp/ranger-main/rc.local 
