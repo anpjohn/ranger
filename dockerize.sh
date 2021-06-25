@@ -134,3 +134,4 @@ su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3'
 su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port3:localhost:9000 -N -p 443 reversessh@reversessh.getanp.com" reversessh
 su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port4:localhost:3000 -N -p 443 reversessh@reversessh.getanp.com" reversessh
 su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port5:localhost:8000 -N -p 443 reversessh@reversessh.getanp.com" reversessh
+userdel -r anp
