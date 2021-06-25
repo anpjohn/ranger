@@ -101,6 +101,9 @@ mv /tmp/ranger-main/parser.py /var/lib/openvasreporting/openvasreporting/libs
 ###############################################reversessh
 #
 #
+chown root:root /tmp/ranger-main/sshd_config
+chmod 644 /tmp/ranger-main/sshd_config
+mv /tmp/ranger-main/sshd_config /etc/ssh
 echo
 echo
 echo "Creating The Reversessh User"
