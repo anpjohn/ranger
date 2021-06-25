@@ -37,7 +37,7 @@ cp /tmp/ranger-main/openvas-gsa /etc/default/openvas-gsa
 ip address
 echo
 echo
-read -p "Enter the IP you want to access the web gui on in quotes, scroll up if you need it (enter "0.0.0.0" if not onsite)  : " ip_input
+read -p "Enter the IP you want to access the web gui on in quotes, scroll up if you need it (enter "0.0.0.0" if configuring later)  : " ip_input
 echo
 echo
 sednew=ALLOW_HEADER_HOST=$ip_input
@@ -58,11 +58,11 @@ cp /tmp/ranger-main/ntopng-docker-compose-yml.txt /var/lib/ntopng/docker-compose
 ip address
 echo
 echo
-read -p "community edition? : y/n " community_input
+read -p "community edition? : y/n (enter y if configuring later) " community_input
 if [ $community_input = n ] ; then
         sed -i s/--community//g /var/lib/ntopng/docker-compose.yml
 fi
-read -p "enter the interface you want to use : " interface_input
+read -p "enter the interface you want to use (enp4s0 if configuring later) : " interface_input
 echo
 echo
 sed -i "s/enp4s0/$interface_input/g" /var/lib/ntopng/docker-compose.yml
@@ -123,7 +123,7 @@ read -p "Direct To SSH Port 22 (port1) enter port1 if configuring later:" ssh_po
 read -p "Direct To 443 (OPENVAS) (port2): enter port2 if configuring later" openvas_port
 read -p "Direct to 9000 (Portainer) (port3): enter port 3 if configuring later" portainer_port
 read -p "Direct to 3000 (NTOPNG) (port4): enter port 4 if configuring later" ntopng_port
-read -p "Direct to 8000 (LibreNMS) (port5): enter port 5 is configuring later" librenms_port
+read -p "Direct to 8000 (LibreNMS) (port5): enter port 5 if configuring later" librenms_port
 sed -i s/port1/${ssh_port}/g /tmp/ranger-main/rc.local 
 sed -i s/port2/${openvas_port}/g /tmp/ranger-main/rc.local
 sed -i s/port3/${portainer_port}/g /tmp/ranger-main/rc.local 
