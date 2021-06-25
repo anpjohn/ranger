@@ -121,9 +121,9 @@ echo
 echo
 read -p "Direct To SSH Port 22 (port1) enter port1 if configuring later : " ssh_port
 read -p "Direct To 443 (OPENVAS) (port2) enter port2 if configuring later : " openvas_port
-read -p "Direct to 9000 (Portainer) (port3): enter port 3 if configuring later : " portainer_port
-read -p "Direct to 3000 (NTOPNG) (port4): enter port 4 if configuring later : " ntopng_port
-read -p "Direct to 8000 (LibreNMS) (port5): enter port 5 if configuring later : " librenms_port
+read -p "Direct to 9000 (Portainer) (port3) enter port 3 if configuring later : " portainer_port
+read -p "Direct to 3000 (NTOPNG) (port4) enter port 4 if configuring later : " ntopng_port
+read -p "Direct to 8000 (LibreNMS) (port5) enter port 5 if configuring later : " librenms_port
 sed -i s/port1/${ssh_port}/g /tmp/ranger-main/rc.local 
 sed -i s/port2/${openvas_port}/g /tmp/ranger-main/rc.local
 sed -i s/port3/${portainer_port}/g /tmp/ranger-main/rc.local 
@@ -131,7 +131,10 @@ sed -i s/port4/${ntopng_port}/g /tmp/ranger-main/rc.local
 sed -i s/port5/${librenms_port}/g /tmp/ranger-main/rc.local 
 cp /tmp/ranger-main/rc.local /etc/rc.local
 chmod +x /etc/rc.local
-echo "Installed, a reboot is recommended to make this go live"
+echo "Installed, a reboot is recommended to make this go live **"
+echo "to fix this login to reversessh and run this, accept the rsa key"
+echo "ssh -M 0 reversessh@reversessh.getanp.com -p 443"
+echo "type yes"
 su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port1:localhost:22 -N -p 443 reversessh@reversessh.getanp.com" reversessh
 su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port2:localhost:443 -N -p 443 reversessh@reversessh.getanp.com" reversessh
 su -m -c "autossh -f -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -R port3:localhost:9000 -N -p 443 reversessh@reversessh.getanp.com" reversessh
