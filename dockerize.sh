@@ -37,7 +37,7 @@ cp /tmp/ranger-main/openvas-gsa /etc/default/openvas-gsa
 ip address
 echo
 echo
-read -p "Enter the IP you want to access the web gui on in quotes, scroll up if you need it (enter "0.0.0.0" if configuring later)  : " ip_input
+read -p "Enter the IP you want to access the web gui on in quotes, scroll up if you need it (enter 0.0.0.0 in quotes if configuring later)  : " ip_input
 echo
 echo
 sednew=ALLOW_HEADER_HOST=$ip_input
