@@ -1,0 +1,14 @@
+Auto scan from libre:
+./snmp-scan.py (need to go into the web interface first and add networks to scan)
+
+
+download xmls (not anonyomus), sftp upload the report to the ranger, run:
+cd /var/lib/
+git clone https://github.com/TheGroundZero/openvasreporting.git
+Example: change directory to /var/lib/openvasreporting
+
+python3 -m openvasreporting -i *.xml -f xlsx
+
+or
+
+python3 -m openvasreporting -i 10.11.10.0.24.xml -i 10.11.1.0.24.xml -i 10.11.109.0.24.xml -i 10.11.20.0.24.xml -i 10.11.254.0.24.xml -i 10.11.30.0.24.xml -i 10.11.4.0.24.xml -i 10.11.5.0.24.xml -i 10.2.5.0.24.xml -i 10.3.5.0.24.xml -i 10.3.6.0.24.xml -i 10.3.7.0.24.xml -i 10.5.5.0.24.xml -i 10.5.6.0.24.xml  -i 10.6.5.0.24.xml -i 10.6.6.0.24.xml -i 10.6.7.0.24.xml -i 10.7.5.0.24.xml -i10.8.0.0.24.xml -i 10.8.2.0.24.xml -f xlsx
