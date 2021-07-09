@@ -20,7 +20,6 @@ rm -rf /etc/default/openvas-gsa
 rm -rf /var/lib/ntopng
 ##oxidized
 rm -rf /var/lib/oxidized
-rm -rf /etc/oxidized/config
-rm -rf /etc/oxidized/router.db
+rm -rf /etc/oxidized
 ##openvasreporttool
 rm -rf /var/lib/openvasreporting
