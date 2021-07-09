@@ -1,5 +1,5 @@
 #!/bin/bash
-#this script rips the rangers
+#this script rips the rangers and all data so they can be repurposed 
 #
 #################################################rip docker, docker-compose, some other tools
 #
