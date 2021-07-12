@@ -6,11 +6,11 @@
 #
 apt purge docker-ce docker-compose -y
 apt autoremove docker-ce docker-compose -y
+rm -rf /tmp/ranger-main
 #
 #
 #######librenms
 rm -rf /var/lib/librenms
-rm -rf /tmp/ranger-main
 ###openvas
 rm -rf /var/lib/openvas
 rm -rf /etc/default/openvas-gsa
