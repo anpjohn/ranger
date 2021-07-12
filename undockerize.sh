@@ -4,8 +4,6 @@
 #################################################rip docker, docker-compose, some other tools
 #
 #
-apt purge apt-transport-https ca-certificates curl gnupg2 software-properties-common net-tools screen autossh python3 python3-pip git -y
-apt autoremove apt-transport-https ca-certificates curl gnupg2 software-properties-common net-tools screen autossh python3 python3-pip git -y
 apt purge docker-ce docker-compose -y
 apt autoremove docker-ce docker-compose -y
 #
