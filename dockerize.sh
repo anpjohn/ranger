@@ -26,26 +26,12 @@ touch /var/lib/librenms/msmtpd.env
 docker-compose -f /var/lib/librenms/docker-compose.yml up -d
 #
 #
-##############################################openvas
+##############################################gvm
 #
 #
-mkdir /var/lib/openvas
-cd /var/lib/openvas
-mkdir /etc/default
-rm -rf /etc/default/openvas-gsa
-cp /tmp/ranger-main/openvas-gsa /etc/default/openvas-gsa
-ip address
-echo
-echo
-read -p "Enter the IP you want to access the web gui on in quotes scroll (enter 0.0.0.0 in quotes if configuring later)  : " ip_input
-echo
-echo
-sednew=ALLOW_HEADER_HOST=$ip_input
-sedoldip='"0.0.0.0"'
-sedold=#ALLOW_HEADER_HOST=$sedoldip
-sed -i "s/$sedold/$sednew/g" /etc/default/openvas-gsa
-sed -i 's/#LISTEN_ADDRESS="0.0.0.0"/LISTEN_ADDRESS="0.0.0.0"/g' /etc/default/openvas-gsa
-docker run -d -p 443:443 -v /etc/default/openvas-gsa:/etc/default/openvas-gsa -v /var/lib/openvas/data:/var/lib/openvas/mgr/ --name openvas --restart=always mikesplain/openvas
+mkdir /var/lib/gvm
+cp /tmp/ranger-main/gvm-docker-compose-yml.txt /var/lib/gvm/docker-compose.yml
+docker-compose -f /var/lib/gvm/docker-compose.yml up -d
 #
 #
 #####################################################ntopng
