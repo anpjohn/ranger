@@ -1,0 +1,23 @@
+version: "2"
+services:
+    gvm:
+        image: securecompliance/gvm:debian-master-data-full
+        volumes:
+          - /opt/database:/opt/database
+          - /var/lib/gvm:/var/lib/gvm
+          - /var/lib/openvas/plugins:/var/lib/openvas/plugins
+        environment:
+          - USERNAME="admin"
+          - PASSWORD="admin"
+          - RELAYHOST="smtp"
+          - SMTPPORT=25
+          - AUTO_SYNC=true
+          - HTTPS=true
+          - TZ="UTC"
+          - SSHD=false
+          - DB_PASSWORD="admin"
+        ports:
+          - "8080:9392"  # Web interface
+          #- "5432:5432" # Access PostgreSQL database from external tools
+          #- "2222:22"   # SSH for remote sensors
+        restart: unless-stopped
